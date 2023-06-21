@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final.Yapilacaklar"
+             Title="Yapilacaklar">
+
+    <StackLayout Margin="20">
+        <Label Text="Yapılacaklar Listesi" Style="{StaticResource TitleStyle}" HorizontalOptions="Center" />
+        <Entry x:Name="itemEntry" Placeholder="Görev girin" />
+        <DatePicker x:Name="datePicker" />
+        <TimePicker x:Name="timePicker" />
+        <Editor x:Name="detailEditor" Placeholder="Detay girin" HeightRequest="100" />
+        <Button Text="Ekle" Clicked="OnAddClicked" />
+        <ListView x:Name="todoListView" ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Description}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Düzenle" CommandParameter="{Binding .}" Clicked="Duzenle_Clicked"/>
+                            <MenuItem Text="Sil" CommandParameter="{Binding .}" Clicked="Sil_Clicked" IsDestructive="True"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

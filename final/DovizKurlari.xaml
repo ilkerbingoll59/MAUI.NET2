@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final.DovizKurlari"
+             Title="Güncel Kurlar">
+
+    <Grid RowDefinitions="Auto,Auto,Auto">
+        <Label Grid.Row="0" Text="Güncel Döviz Kurları" TextColor="Orange" FontSize="Large" Margin="20"/>
+        <CollectionView Grid.Row="1" Margin="20" x:Name="dovizliste">
+            <CollectionView.Header>
+
+                <Grid ColumnDefinitions="*,*,*,*,*" RowSpacing="10">
+                    <Label Grid.Column="0" Text="Adı" TextColor="Purple"/>
+                    <Label Grid.Column="1" Text="Alış Fiyatı" TextColor="Purple"/>
+                    <Label Grid.Column="2" Text="Satış Fiyatı" TextColor="Purple"/>
+                    <Label Grid.Column="3" Text="Fark" TextColor="Purple"/>
+                    <Label Grid.Column="4" Text="Yön" TextColor="Purple"/>
+                </Grid>
+
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,*,*,*,*">
+                        <Label Grid.Column="0" Text="{Binding DName}"/>
+                        <Label Grid.Column="1" Text="{Binding FAlis}"/>
+                        <Label Grid.Column="2" Text="{Binding FSatis}"/>
+                        <Label Grid.Column="3" Text="{Binding Fark}"/>
+                        <Image Grid.Column="4" Source="{Binding Yon}" HeightRequest="20"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2" Text="Güncelle" Margin="20" Clicked="Button_Clicked" ImageSource="update.png"/>
+    </Grid>
+</ContentPage>
+
